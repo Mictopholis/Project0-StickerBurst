@@ -1,0 +1,1 @@
+hello! This is a test for initializing this repository.
