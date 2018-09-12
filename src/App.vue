@@ -1,5 +1,10 @@
 <template>
-    
+<v-app>
+    <v-toolbar>
+    Testing the toolbar
+    <v-icon>home</v-icon>
+    </v-toolbar>
+</v-app>
 </template>
 
 <script>
