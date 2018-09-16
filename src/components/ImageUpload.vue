@@ -2,12 +2,15 @@
 <div id="app">
   <div v-for="item in items">
     <div v-if="!item.image">
-      <h2>Select an image</h2>
-      <input type="file" @change="onFileChange(item, $event)">
+    <v-layout column wrap align-center>
+      <h2>Upload Your Photo Here!</h2>
+      <v-icon x-large>cloud_upload</v-icon>
+      <input type="file" accept="image/*" @change="onFileChange(item, $event)">
+    </v-layout>
     </div>
     <div v-else>
       <img :src="item.image" />
-      <button @click="removeImage(item)">Remove image</button>
+      <v-btn color="primary" @click="removeImage(item)">Choose Another Image</v-btn>
     </div>
   </div>
 </div>
@@ -53,7 +56,7 @@
   text-align: center;
 }
 img {
-    height: 500px;
+    height: 300px;
 }
 button {
 
