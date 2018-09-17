@@ -54,34 +54,37 @@
           required: value => !!value || 'Required.',
           min: v => v.length >= 8 || 'Min 8 characters',
         },
-        accounts: {
-          user1: {
-            username: "garrett4",
-            password: "odomodom"
-          },
-          user2: {
-            username: "garrett6",
-            password: "odomodom4"
-          },
-          user3: {
-            username: "garrett5",
-            password: "odomodom"
-          },
-        }
+        accounts: [
+          "garrett4",
+          "texasfight",
+          "csrules4",
+          "chicken4"
+        ],
+        passwords: [
+          "odomodom",
+          "longhorns",
+          "aerorules",
+          "biscuit4"
+        ],
+        loop: 0,
+        loggedIn: 0
       }
     },
     methods: {
       login: function (event) {
-        if(this.input.username == this.accounts.username && this.input.password == this.accounts.password) {
-          alert('***Direct to higher access area***')
-        } else {
+        this.loggedIn = 0
+        for (this.loop = 0; this.loop < this.accounts.length; this.loop++) {
+          if(this.input.username == this.accounts[this.loop] && this.input.password == this.passwords[this.loop] && this.loggedIn == 0) {
+            alert('***Direct to higher access area***')
+            this.loggedIn = 1
+          }
+        }
+        if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
         }
       }
     }
   }
-
-
 
 </script>
 
