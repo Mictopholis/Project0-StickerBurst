@@ -55,8 +55,18 @@
           min: v => v.length >= 8 || 'Min 8 characters',
         },
         accounts: {
-          username: "garrett4",
-          password: "odomodom"
+          user1: {
+            username: "garrett4",
+            password: "odomodom"
+          },
+          user2: {
+            username: "garrett6",
+            password: "odomodom4"
+          },
+          user3: {
+            username: "garrett5",
+            password: "odomodom"
+          },
         }
       }
     },
