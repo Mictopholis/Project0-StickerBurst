@@ -1,12 +1,12 @@
 <template>
   <div>
-  <v-layout row wrap>
+  <v-layout id="login" row wrap>
+  <v-layout column wrap>
     <v-flex xs4>
       <v-text-field v-if="loggedIn == 0"
               v-model="input.username"
               label="Username"
               hint="At least 8 characters"
-              counter
               clearable
               @click:append="show1 = !show1"
       ></v-text-field>
@@ -23,19 +23,17 @@
                 name="input-10-1"
                 label="Password"
                 hint="At least 8 characters"
-                counter
                 clearable
                 @click:append="show1 = !show1"
         ></v-text-field>
     </v-flex>
-
+    </v-layout>
     <v-flex xs3>
         <v-btn v-if="loggedIn == 0"
                 color="success"
                 v-on:click="login">Login
         </v-btn>
     </v-flex>
-
     <v-flex xs3>
         <v-btn v-if="loggedIn"
                 color="error"
@@ -43,6 +41,7 @@
         </v-btn>
     </v-flex>
 
+  </v-layout>
   </v-layout>
   </div>
 
@@ -113,5 +112,8 @@ import { EventBus } from '../main.js';
 </script>
 
 <style>
-
+#login {
+  position: relative;
+  top: 32px;
+}
 </style>

@@ -1,12 +1,10 @@
 <template>
     <v-app>
-        <v-toolbar>
-            <v-icon x-large>home</v-icon>
-            <h1>STICKER BURST</h1>
+        <v-toolbar extended color="grey">
+            <img align-center id="logo" src="../sticker-bros.png"/>
             <v-spacer/>
             <Login/>
         </v-toolbar>
-
         <v-container grid-list-md text-xs-center>
             <v-layout row wrap>
                 <v-flex xs12>
@@ -55,5 +53,9 @@ data () {
 </script>
 
 <style>
-
+#logo {
+    height: 110px;
+    position: relative;
+    top: 33px;
+}
 </style>
