@@ -109,7 +109,7 @@ import { EventBus } from '../main.js';
       }
     }
   }
-};
+
 </script>
 
 <style>
