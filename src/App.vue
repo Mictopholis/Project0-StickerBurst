@@ -1,8 +1,8 @@
 <template>
     <v-app>
         <v-toolbar>
-            <v-icon>home</v-icon>
-            <h1>Logo</h1>
+            <v-icon x-large>home</v-icon>
+            <h1>STICKER BURST</h1>
             <v-spacer/>
             <Login/>
         </v-toolbar>

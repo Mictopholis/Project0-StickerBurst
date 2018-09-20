@@ -1,5 +1,4 @@
 <template>
-  
   <div>
   <v-layout row wrap>
     <v-flex xs4>
@@ -110,7 +109,7 @@ import { EventBus } from '../main.js';
       }
     }
   }
-
+};
 </script>
 
 <style>
