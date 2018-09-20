@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 
   export default {
     data () {
@@ -82,7 +83,8 @@
           2
         ],
         loop: 0,
-        loggedIn: 0
+        loggedIn: 0,
+        tierlevel: 0,
       }
     },
     methods: {
@@ -102,6 +104,9 @@
       logout: function (event) {
         this.loggedIn = 0
         alert('Logged Out')
+      },
+      emitGlobalClickEvent() {
+          EventBus.$emit('tierinfo',this.tierlevel);
       }
     }
   }
