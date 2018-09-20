@@ -1,77 +1,114 @@
 <template>
-    <div>
-        <v-form ref="form">
-            <v-container grid-list-md>
-                <v-layout row wrap>
+  <div>
+  <v-layout row wrap>
+    <v-flex xs4>
+      <v-text-field v-if="loggedIn == 0"
+              v-model="input.username"
+              label="Username"
+              hint="At least 8 characters"
+              counter
+              clearable
+              @click:append="show1 = !show1"
+      ></v-text-field>
+    </v-flex>
 
-                <!--username input-->
-                <v-text-field
-                    v-model="username"
-                    label="Username"
-                    required
-                ></v-text-field>
+    <v-spacer/>
 
-                <!--password input-->
-                <v-text-field
-                    v-model="password"
-                    label="Password"
-                    required
-                ></v-text-field>
+    <v-flex xs4>
+        <v-text-field v-if="loggedIn == 0"
+                v-model="input.password"
+                :rules="[rules.required, rules.min]"
+                :type="show1 ? 'text' : 'password'"
+                position="relative"
+                name="input-10-1"
+                label="Password"
+                hint="At least 8 characters"
+                counter
+                clearable
+                @click:append="show1 = !show1"
+        ></v-text-field>
+    </v-flex>
 
-                <!--submit button (disabled until inputs have text, and calls "clear" function when clicked)-->
-                <v-btn
-                    color="green"
-                    :disabled="username=='' || password=='' "
-                    v-on:click="clear"
-                    >Submit
-                </v-btn>
+    <v-flex xs3>
+        <v-btn v-if="loggedIn == 0"
+                color="success"
+                v-on:click="login">Login
+        </v-btn>
+    </v-flex>
 
-                </v-layout>
-            </v-container>
-        </v-form>
-    </div>
+    <v-flex xs3>
+        <v-btn v-if="loggedIn"
+                color="error"
+                v-on:click="logout">Logout
+        </v-btn>
+    </v-flex>
+
+  </v-layout>
+  </div>
+
 </template>
 
 <script>
-export default {
-    //"data" is just here to initialize all the variables we're using
-    data: () => ({
-      username: '',
-      password: '',
-      loop: 0,
-      usernameCorrect: false,
-      passwordCorrect: false,
-      AcceptedUsernames: ["User1","User2","User3"],
-      AcceptedPasswords: ["passypass","pusheen","MarioKart"],
-    }),
+import { EventBus } from '../main.js';
 
+  export default {
+    data () {
+      return {
+        show1: false,
+        input: {
+          username: "",
+          password: ""
+        },
+        rules: {
+          required: value => !!value || 'Required.',
+          min: v => v.length >= 8 || 'Min 8 characters',
+        },
+        accounts: [
+          "garrett4",
+          "texasfight",
+          "csrules4",
+          "chicken4"
+        ],
+        passwords: [
+          "odomodom",
+          "longhorns",
+          "aerorules",
+          "biscuit4"
+        ],
+        access: [
+          1,
+          1,
+          2,
+          2
+        ],
+        loop: 0,
+        loggedIn: 0,
+        tierlevel: 0,
+      }
+    },
     methods: {
-        //the "clear" function is the one that runs when "submit" is pressed (called in <template>)
-        clear: function(){
-            console.log("USERNAME: "+this.username)
-            console.log("PASSWORD: "+this.password)
-
-            //iterating through our initialized array of usernames and passwords to check for matches
-            for (this.loop = 0; this.loop<this.AcceptedUsernames.length; this.loop++) { 
-                if(this.username==this.AcceptedUsernames[this.loop]){
-                    this.usernameCorrect=true;
-                }
-                if(this.password==this.AcceptedPasswords[this.loop]){
-                    this.passwordCorrect=true;
-                }
-            }
-
-            console.log("IS USERNAME CORRECT? "+this.usernameCorrect)
-            console.log("IS PASSWORD CORRECT? "+this.passwordCorrect)
-
-            //this resets the form and clears the inputs
-            this.$refs.form.reset()
-            this.username=''
-            this.password=''
+      login: function (event) {
+        this.loggedIn = 0
+        for (this.loop = 0; this.loop < this.accounts.length; this.loop++) {
+          if(this.input.username == this.accounts[this.loop] && this.input.password == this.passwords[this.loop] && this.loggedIn == 0) {
+            alert('Logged in as ' + this.input.username + '\nTier ' + this.access[this.loop] + ' Access')
+            this.loggedIn = 1
+            this.tierlevel = this.access[this.loop]
+          }
         }
-
+        if (this.loggedIn == 0) {
+          alert('Invalid Login Credentials. Please Try Again.')
+        }
+      },
+      logout: function (event) {
+        this.loggedIn = 0
+        alert('Logged Out')
+      },
+      emitGlobalClickEvent() {
+          EventBus.$emit('tierinfo',this.tierlevel);
+      }
     }
-
+  }
 };
 </script>
 

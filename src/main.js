@@ -3,6 +3,7 @@ import Vuetify from 'vuetify'
 import App from './App.vue'
 import EventBus from './event-bus'
 import 'vuetify/dist/vuetify.min.css'
+export const EventBus = new Vue();
 
 Vue.use(Vuetify)
 

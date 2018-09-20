@@ -1,9 +1,80 @@
 <template>
-<h1> Sticker Theme Selection </h1>
+  <v-container fluid class="pa-0">
+    <v-layout row wrap>
+      <v-flex xs12>
+        <p>Normal</p>
+      </v-flex>
+
+      <v-flex xs12 xl3>
+        <v-btn flat icon color="pink">
+          <img src="../assets/inbreadcat.png"/>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn flat icon color="indigo">
+          <v-icon>star</v-icon>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn flat icon color="green">
+          <v-icon>cached</v-icon>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn flat icon color="deep-orange">
+          <v-icon>thumb_up</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+
+    <v-layout row wrap class="mt-5">
+      <v-flex xs12>
+        <p>Disabled</p>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn icon disabled>
+          <v-icon>favorite</v-icon>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn icon disabled>
+          <v-icon>star</v-icon>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn icon disabled>
+          <v-icon>cached</v-icon>
+        </v-btn>
+      </v-flex>
+
+      <v-flex xs12 sm3>
+        <v-btn icon disabled>
+          <v-icon>thumb_up</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 
+export default {
+    methods: {
+      /*(listenForTier() {
+          EventBus.$on('tierinfo',this.tierlevel=> {
+            console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
+        });
+      }*/
+    }
+
+}
 </script>
 
 <style>
