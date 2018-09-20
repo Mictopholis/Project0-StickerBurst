@@ -66,13 +66,6 @@
 import { EventBus } from '../main.js';
 
 export default {
-    methods: {
-      /*(listenForTier() {
-          EventBus.$on('tierinfo',this.tierlevel=> {
-            console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
-        });
-      }*/
-    }
 
 }
 </script>
