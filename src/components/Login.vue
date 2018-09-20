@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { EventBus } from '../main.js';
 
   export default {
     data () {
@@ -67,7 +68,8 @@
           "biscuit4"
         ],
         loop: 0,
-        loggedIn: 0
+        loggedIn: 0,
+        tierlevel: 0,
       }
     },
     methods: {
@@ -82,6 +84,10 @@
         if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
         }
+      },
+
+      emitGlobalClickEvent() {
+          EventBus.$emit('tierinfo',this.tierlevel);
       }
     }
   }

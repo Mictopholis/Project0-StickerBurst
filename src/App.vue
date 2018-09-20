@@ -35,7 +35,7 @@
 import Login from './components/Login.vue'
 import ImageUpload from './components/ImageUpload.vue'
 import Sticker_Theme_Selection from './components/Sticker_Theme_Selection.vue'
-import { EventBus } from './event-bus.js';
+
 
 export default {
 
