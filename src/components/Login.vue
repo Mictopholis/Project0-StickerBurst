@@ -3,11 +3,12 @@
   <div>
   <v-layout row wrap>
     <v-flex xs4>
-      <v-text-field
+      <v-text-field v-if="loggedIn == 0"
               v-model="input.username"
               label="Username"
               hint="At least 8 characters"
               counter
+              clearable
               @click:append="show1 = !show1"
       ></v-text-field>
     </v-flex>
@@ -15,7 +16,7 @@
     <v-spacer/>
 
     <v-flex xs4>
-        <v-text-field
+        <v-text-field v-if="loggedIn == 0"
                 v-model="input.password"
                 :rules="[rules.required, rules.min]"
                 :type="show1 ? 'text' : 'password'"
@@ -24,14 +25,22 @@
                 label="Password"
                 hint="At least 8 characters"
                 counter
+                clearable
                 @click:append="show1 = !show1"
         ></v-text-field>
     </v-flex>
 
     <v-flex xs3>
-        <v-btn 
+        <v-btn v-if="loggedIn == 0"
                 color="success"
                 v-on:click="login">Login
+        </v-btn>
+    </v-flex>
+
+    <v-flex xs3>
+        <v-btn v-if="loggedIn"
+                color="error"
+                v-on:click="logout">Logout
         </v-btn>
     </v-flex>
 
@@ -67,6 +76,12 @@ import { EventBus } from '../main.js';
           "aerorules",
           "biscuit4"
         ],
+        access: [
+          1,
+          1,
+          2,
+          2
+        ],
         loop: 0,
         loggedIn: 0,
         tierlevel: 0,
@@ -77,15 +92,19 @@ import { EventBus } from '../main.js';
         this.loggedIn = 0
         for (this.loop = 0; this.loop < this.accounts.length; this.loop++) {
           if(this.input.username == this.accounts[this.loop] && this.input.password == this.passwords[this.loop] && this.loggedIn == 0) {
-            alert('***Direct to higher access area***')
+            alert('Logged in as ' + this.input.username + '\nTier ' + this.access[this.loop] + ' Access')
             this.loggedIn = 1
+            this.tierlevel = this.access[this.loop]
           }
         }
         if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
         }
       },
-
+      logout: function (event) {
+        this.loggedIn = 0
+        alert('Logged Out')
+      },
       emitGlobalClickEvent() {
           EventBus.$emit('tierinfo',this.tierlevel);
       }
