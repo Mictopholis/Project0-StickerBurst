@@ -93,6 +93,7 @@ import { EventBus } from '../main.js';
             alert('Logged in as ' + this.input.username + '\nTier ' + this.access[this.loop] + ' Access')
             this.loggedIn = 1
             this.tierlevel = this.access[this.loop]
+            EventBus.$emit('tierinfo',this.tierlevel);
           }
         }
         if (this.loggedIn == 0) {
@@ -102,9 +103,6 @@ import { EventBus } from '../main.js';
       logout: function (event) {
         this.loggedIn = 0
         alert('Logged Out')
-      },
-      emitGlobalClickEvent() {
-          EventBus.$emit('tierinfo',this.tierlevel);
       }
     }
   }
