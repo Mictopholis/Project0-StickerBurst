@@ -53,7 +53,7 @@
 
             <v-flex xs12 sm3>
               <v-btn flat large @click="ClickFunction()">
-                <img src="../../sticker/avatar/001-man.png" />
+                <img src="../../sticker/Avatar/001-man.png" />
               </v-btn>
             </v-flex>
 
@@ -72,12 +72,12 @@
       <p> Are you sure you want to use this theme?</p>
       <v-layout row wrap>
         <div>
-          <v-btn depressed small color="primary" @click="EventFunction()">
+          <v-btn depressed small left color="primary" @click="EventFunction()">
             Yes
           </v-btn>
         </div>
         <div>
-          <v-btn depressed small color="error" @click="BackToMain()">
+          <v-btn depressed small left color="error" @click="BackToMain()">
             No
           </v-btn>
         </div>
