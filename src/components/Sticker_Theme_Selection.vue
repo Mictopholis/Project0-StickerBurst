@@ -1,71 +1,74 @@
 <template>
-  <!-- Tier 2 (login) Buttons -->
+  <!-- Tier 0 (no login) Buttons -->
   <div v-if="!buttonSelected">
 
-      <div v-if="tierlevel1">
+      <div v-if="tierlevel0">
           <v-btn depressed small color="error" @click="EventFunction()">
             I like to live on the wild side. Randomize me!
           </v-btn>
       </div>
-
-      <div v-if="tierlevel2">
-        <v-container fluid class="pa-0">
+  
+      <v-container fluid class="pa-0">
+        <!-- Tier 1 (basic login) and part of Tier 2 (premium login) buttons -->
+        <div v-if="tierlevel1 || tierlevel2">
           <v-layout row wrap>
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction(0)">
+              <v-btn flat large @click="ClickFunction()">
                 <img src="../../sticker/avatar/001-man.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction(1)">
+              <v-btn flat large @click="ClickFunction()">
                 <img src="../../sticker/cooking/012-chef.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction(2)">
+              <v-btn flat large @click="ClickFunction()">
                 <img src="../../sticker/payment/041-bitcoin.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction(3)">
+              <v-btn flat large @click="ClickFunction()">
                 <img src="../../sticker/recycle/047-recycling-2.png" />
               </v-btn>
             </v-flex>
+          </v-layout>
+        </div>
 
+        <!-- Tier 2 (premium) only Buttons -->
+        <div v-if="tierlevel2">
+          <v-layout row wrap>
+            <v-flex xs12 sm3>
+              <v-btn flat disabled large></v-btn>
+            </v-flex>
 
-            <!-- Tier 3 (premium) Buttons -->
-            <v-flex v-if="tierlevel3">
-              <v-layout row wrap>
-                <v-flex xs12 sm3>
-                  <v-btn flat disabled large></v-btn>
-                </v-flex>
+            <v-flex xs12 sm3>
+              <v-btn flat large @click="ClickFunction()">
+                <img src="../../sticker/social_networking/facebook.png" />
+              </v-btn>
+            </v-flex>
 
-                <v-flex xs12 sm3>
-                  <v-btn flat large @click="ClickFunction(4)">
-                    <img src="../../sticker/social_networking/facebook.png" />
-                  </v-btn>
-                </v-flex>
+            <v-flex xs12 sm3>
+              <v-btn flat large @click="ClickFunction()">
+                <img src="../../sticker/avatar/001-man.png" />
+              </v-btn>
+            </v-flex>
 
-                <v-flex xs12 sm3>
-                  <v-btn flat large @click="ClickFunction(5)">
-                    <img src="../../sticker/avatar/001-man.png" />
-                  </v-btn>
-                </v-flex>
-
-                <v-flex xs12 sm3>
-                  <v-btn flat disabled large></v-btn>
-                </v-flex>
-              </v-layout>
+            <v-flex xs12 sm3>
+              <v-btn flat disabled large></v-btn>
             </v-flex>
           </v-layout>
-        </v-container>
+        </div>
+
+      </v-container>
       </div>
     </div>
 
     <div v-else>
+      <!--when you click a button, a confirm screen shows-->
       <p> Are you sure you want to use this theme?</p>
       <v-layout row wrap>
         <div>
@@ -79,7 +82,6 @@
           </v-btn>
         </div>
       </v-layout>
-
     </div>
 </template>
 
@@ -89,23 +91,19 @@
     //initialize variables
     data: () => ({
       //Decides what tier
-      tierlevel1: true,
-      tierlevel2: false,
-      tierlevel3: false,
+      tierlevel0: false,
+      tierlevel1: false,
+      tierlevel2: true,
       //button function items
       buttonSelected: false,
       stickerNumber: 0,
-
-      //theme list
-      posts: ['avatar', 'cooking', 'payment', 'recycle', 'social networking', 'BB'],
-      theme: '',
+     
     }),
 
     methods: {
       //fucntions go in here
-      ClickFunction: function (stickerNumber){
-        this.buttonSelected = true
-        this.theme = stickers[stickerNumber.title]   
+      ClickFunction: function (){
+        this.buttonSelected = true 
       },
       BackToMain: function () {
         this.buttonSelected = false
@@ -113,6 +111,9 @@
       },
       WhichTheme: function () {
         return this.theme;
+      },
+      EventFunction: function () {
+
       },
   }
   }
