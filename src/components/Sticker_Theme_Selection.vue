@@ -13,25 +13,25 @@
         <div v-if="tierlevel1 || tierlevel2">
           <v-layout row wrap>
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(0)">
                 <img src="../../sticker/avatar/001-man.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(1)">
                 <img src="../../sticker/cooking/012-chef.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(2)">
                 <img src="../../sticker/payment/041-bitcoin.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(3)">
                 <img src="../../sticker/recycle/047-recycling-2.png" />
               </v-btn>
             </v-flex>
@@ -46,13 +46,13 @@
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(4)">
                 <img src="../../sticker/social_networking/facebook.png" />
               </v-btn>
             </v-flex>
 
             <v-flex xs12 sm3>
-              <v-btn flat large @click="ClickFunction()">
+              <v-btn flat large @click="ClickFunction(5)">
                 <img src="../../sticker/Avatar/001-man.png" />
               </v-btn>
             </v-flex>
@@ -97,13 +97,15 @@
       //button function items
       buttonSelected: false,
       stickerNumber: 0,
-     
+      themes =["Avatar", "Cooking", "Payment", "Recycling", "Social Networking", "BB"],
+      theme = '',
     }),
 
     methods: {
       //fucntions go in here
-      ClickFunction: function (){
-        this.buttonSelected = true 
+      ClickFunction: function (stickerNumber){
+        this.buttonSelected = true
+        this.theme = this.themes[stickerNumber]
       },
       BackToMain: function () {
         this.buttonSelected = false
