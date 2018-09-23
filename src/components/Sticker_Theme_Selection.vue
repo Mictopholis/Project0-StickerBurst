@@ -97,8 +97,8 @@
       //button function items
       buttonSelected: false,
       stickerNumber: 0,
-      themes =["Avatar", "Cooking", "Payment", "Recycling", "Social Networking", "BB"],
-      theme = '',
+      themes: ["Avatar", "Cooking", "Payment", "Recycling", "Social Networking", "BB"],
+      theme: '',
     }),
 
     methods: {
