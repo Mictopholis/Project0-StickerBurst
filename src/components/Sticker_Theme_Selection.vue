@@ -1,13 +1,14 @@
 <template>
+
   <!-- Tier 0 (no login) Buttons -->
   <div v-if="!buttonSelected">
-
+      <h2>Sticker Theme Selection!</h2>
       <div v-if="tierlevel0">
           <v-btn depressed small color="error" @click="EventFunction()">
             I like to live on the wild side. Randomize me!
           </v-btn>
       </div>
-  
+
       <v-container fluid class="pa-0">
         <!-- Tier 1 (basic login) and part of Tier 2 (premium login) buttons -->
         <div v-if="tierlevel1 || tierlevel2">
@@ -83,6 +84,7 @@
         </div>
       </v-layout>
     </div>
+ 
 </template>
 
 <script>
