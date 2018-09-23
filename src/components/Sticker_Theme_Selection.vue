@@ -71,7 +71,7 @@
     <div v-else>
       <!--when you click a button, a confirm screen shows-->
       <p> Are you sure you want to use this theme?</p>
-      <v-layout row wrap>
+      <v-layout row wrap justify-center>
         <div>
           <v-btn depressed small left color="primary" @click="EventFunction()">
             Yes
