@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <v-toolbar extended>
-            <img align-center id="logo" src="../logo_bar.png"/>
+            <img align-center id="logo" src="../sticker_bar.png"/>
             <v-spacer/>
             <Login/>
         </v-toolbar>
