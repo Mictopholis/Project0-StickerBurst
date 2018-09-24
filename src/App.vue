@@ -8,7 +8,7 @@
         <v-container grid-list-md text-xs-center>
             <v-layout row wrap>
                 <v-flex xs12>
-                        <img id="topbar" src="../top_bar.gif" />
+                        <img id="topbar" src="../anim.gif" />
                 </v-flex>
                 <v-flex xs6>
                     <v-card>
