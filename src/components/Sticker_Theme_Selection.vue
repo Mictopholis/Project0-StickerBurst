@@ -1,7 +1,7 @@
 <template>
-
-  <!-- Tier 0 (no login) Buttons -->
-  <div v-if="!buttonSelected && displaySelection">
+<div>
+ <!-- Tier 0 (no login) Buttons -->
+  <div v-if="!buttonSelected">
       <h2>Sticker Theme Selection!</h2>
       <div v-if="tierlevel0">
           <v-btn depressed small color="error" @click="EventFunction()">
@@ -67,7 +67,7 @@
       </v-container>
     </div>
 
-    <div v-else-if="displaySelection">
+    <div v-else>
       <!--when you click a button, a confirm screen shows-->
       <p> Are you sure you want to use this theme?</p>
       <v-layout row wrap justify-center>
@@ -84,10 +84,7 @@
       </v-layout>
     </div>
 
-    <div v-else-if="!displaySelection">
-    Please upload image first
-    </div>
-
+</div>
 </template>
 
 <script>
@@ -110,7 +107,7 @@ export default {
   }),
 
   methods: {
-    //fucntions go in here
+    //functions go in here
     ClickFunction: function (stickerNumber){
       this.buttonSelected = true
       this.theme = this.themes[stickerNumber]
@@ -122,9 +119,8 @@ export default {
     WhichTheme: function () {
       return this.theme;
     },
-    EventFunction: function () {
 
-    },
+
   },
   
   created () {
