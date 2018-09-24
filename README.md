@@ -1,6 +1,4 @@
-# portfolio
-
-> A Vue.js project
+# Sticker Bros!
 
 ## Build Setup
 
