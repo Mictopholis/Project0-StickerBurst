@@ -124,7 +124,6 @@ export default {
   
   created () {
     EventBus.$on('tierinfo', tierlevel);
-      console.log(tierlevel);
       if (tierlevel == 0){
         this.tierlevel0 = true;
         this.tierlevel1 = false;
