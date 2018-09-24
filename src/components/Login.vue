@@ -93,12 +93,14 @@ import { EventBus } from '../main.js';
             alert('Logged in as ' + this.input.username + '\nTier ' + this.access[this.loop] + ' Access')
             this.loggedIn = 1
             this.tierlevel = this.access[this.loop]
+            console.log("username: "+this.input.username + " tier: "+this.tierlevel);
             EventBus.$emit('tierinfo',this.tierlevel)
           }
         }
         if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
           this.tierlevel = 0
+          console.log("username: "+this.input.username + " tier: "+this.tierlevel);
           EventBus.$emit('tierinfo', this.tierlevel)
         }
       },
@@ -106,6 +108,7 @@ import { EventBus } from '../main.js';
         this.loggedIn = 0
         this.tierlevel = 0;
         alert('Logged Out')
+        console.log("username: "+this.input.username + " tier: "+this.tierlevel);
         EventBus.$emit('tierinfo', this.tierlevel)
       }
     }
