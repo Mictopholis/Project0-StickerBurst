@@ -3,7 +3,8 @@
 ## Build Setup
 
 ``` bash
-#git clone <repository link>
+# clone the repository to your local machine
+git clone <repository link>
 
 # install dependencies
 npm install
