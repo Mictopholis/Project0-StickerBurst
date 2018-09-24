@@ -1,7 +1,7 @@
 <template>
 
   <!-- Tier 0 (no login) Buttons -->
-  <div v-if="!buttonSelected && displaySelection">
+  <div v-if="!buttonSelected">
       <h2>Sticker Theme Selection!</h2>
       <div v-if="tierlevel0">
           <v-btn depressed small color="error" @click="EventFunction()">
@@ -67,7 +67,7 @@
       </v-container>
     </div>
 
-    <div v-else-if="displaySelection">
+    <div v-else>
       <!--when you click a button, a confirm screen shows-->
       <p> Are you sure you want to use this theme?</p>
       <v-layout row wrap justify-center>
@@ -84,23 +84,18 @@
       </v-layout>
     </div>
 
-    <div v-else-if="!displaySelection">
-    Please upload image first
-    </div>
-
 </template>
 
 <script>
 import { EventBus } from '../main.js';
-import { EventBus2 } from '../main.js';
 
 export default {
   //initialize variables
   data: () => ({
     //Decides what tier
-    tierlevel0: false,
+    tierlevel0: true,
     tierlevel1: false,
-    tierlevel2: true,
+    tierlevel2: false,
     //button function items
     buttonSelected: false,
     stickerNumber: 0,
@@ -128,10 +123,23 @@ export default {
   },
   
   created () {
-    EventBus2.$on('image-chosen-status', function (imageChosen) {
-      this.displaySelection = imageChosen;
-      console.log("display selection: "+this.displaySelection);
-    });
+    EventBus.$on('tierinfo', tierlevel);
+      console.log(tierlevel);
+      if (tierlevel == 0){
+        this.tierlevel0 = true;
+        this.tierlevel1 = false;
+        this.tierlevel2 = false;
+      }
+      if (tierlevel == 1){
+        this.tierlevel0 = false;
+        this.tierlevel1 = true;
+        this.tierlevel2 = false;
+      }
+      if (tierlevel == 2){
+        this.tierlevel0 = false;
+        this.tierlevel1 = false;
+        this.tierlevel2 = true;
+      }
   }
 }
 
