@@ -1,7 +1,7 @@
 <template>
   <div>
   <v-layout id="login" row wrap>
-  <v-layout column wrap>
+  
     <v-flex xs4>
       <v-text-field v-if="loggedIn == 0"
               v-model="input.username"
@@ -27,7 +27,7 @@
                 @click:append="show1 = !show1"
         ></v-text-field>
     </v-flex>
-    </v-layout>
+    
     <v-flex xs3>
         <v-btn v-if="loggedIn == 0"
                 color="success"
