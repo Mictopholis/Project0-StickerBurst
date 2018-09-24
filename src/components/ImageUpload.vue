@@ -15,7 +15,7 @@
           <div class="file-select">
             <div class="file-select-button" id="fileName">Choose File</div>
             <div class="file-select-name" id="noFile">No file chosen...</div> 
-            <input type="file" name="chooseFile" id="chooseFile" accept="image/*" @change="onFileChange(item, $event)">
+            <input type="file" name="chooseFile" id="chooseFile" accept="image/*" @change="onFileChange(item, $event), emitGlobalClickEvent()">
           </div>
         </div>
       </v-flex>
@@ -28,7 +28,7 @@
           <img id="displayedPic" :src="item.image" />
         </v-flex>
         <v-flex x12 sm3>
-          <v-btn color="primary" @click="removeImage(item)">Choose Another Image</v-btn>
+          <v-btn color="primary" @click="removeImage(item),emitGlobalClickEvent()">Choose Another Image</v-btn>
         </v-flex>
       </v-layout>
     </div>
@@ -38,18 +38,20 @@
 </template>
 
 <script>
+import { EventBus2} from '../main.js';
 
-   export default{
+export default {
   data: () => ({
     items: [
        {
          image: false,
        },
-
     ],
+    imageChosen: false,
    }),
   methods: {
     onFileChange(item, e) {
+      this.imageChosen = true;
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
@@ -65,11 +67,15 @@
       reader.readAsDataURL(file);
     },
     removeImage: function (item) {
+      this.imageChosen = false;
       item.image = false;
-    }
-  }
-
+    },
+    emitGlobalClickEvent() {
+      EventBus2.$emit('image-chosen-status', this.imageChosen);
+      console.log("image chosen: "+this.imageChosen);
+    },
 }
+};
 </script>
 
 <style>

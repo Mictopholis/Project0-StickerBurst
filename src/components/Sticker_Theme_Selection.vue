@@ -1,7 +1,7 @@
 <template>
 
   <!-- Tier 0 (no login) Buttons -->
-  <div v-if="!buttonSelected">
+  <div v-if="!buttonSelected && displaySelection">
       <h2>Sticker Theme Selection!</h2>
       <div v-if="tierlevel0">
           <v-btn depressed small color="error" @click="EventFunction()">
@@ -65,10 +65,9 @@
         </div>
 
       </v-container>
-      </div>
     </div>
 
-    <div v-else>
+    <div v-else-if="displaySelection">
       <!--when you click a button, a confirm screen shows-->
       <p> Are you sure you want to use this theme?</p>
       <v-layout row wrap justify-center>
@@ -84,44 +83,57 @@
         </div>
       </v-layout>
     </div>
- 
+
+    <div v-else-if="!displaySelection">
+    Please upload image first
+    </div>
+
 </template>
 
 <script>
-  import { EventBus } from '../main.js';
-  export default {
-    //initialize variables
-    data: () => ({
-      //Decides what tier
-      tierlevel0: false,
-      tierlevel1: false,
-      tierlevel2: true,
-      //button function items
-      buttonSelected: false,
-      stickerNumber: 0,
-      themes: ["Avatar", "Cooking", "Payment", "Recycling", "Social Networking", "BB"],
-      theme: '',
-    }),
+import { EventBus } from '../main.js';
+import { EventBus2 } from '../main.js';
 
-    methods: {
-      //fucntions go in here
-      ClickFunction: function (stickerNumber){
-        this.buttonSelected = true
-        this.theme = this.themes[stickerNumber]
-      },
-      BackToMain: function () {
-        this.buttonSelected = false
+export default {
+  //initialize variables
+  data: () => ({
+    //Decides what tier
+    tierlevel0: false,
+    tierlevel1: false,
+    tierlevel2: true,
+    //button function items
+    buttonSelected: false,
+    stickerNumber: 0,
+    themes: ["Avatar", "Cooking", "Payment", "Recycling", "Social Networking", "BB"],
+    theme: '',
+    displaySelection: false,
+  }),
 
-      },
-      WhichTheme: function () {
-        return this.theme;
-      },
-      EventFunction: function () {
+  methods: {
+    //fucntions go in here
+    ClickFunction: function (stickerNumber){
+      this.buttonSelected = true
+      this.theme = this.themes[stickerNumber]
+    },
+    BackToMain: function () {
+      this.buttonSelected = false
 
-      },
+    },
+    WhichTheme: function () {
+      return this.theme;
+    },
+    EventFunction: function () {
+
+    },
+  },
+  
+  created () {
+    EventBus2.$on('image-chosen-status', function (imageChosen) {
+      this.displaySelection = imageChosen;
+      console.log("display selection: "+this.displaySelection);
+    });
   }
-  }
-
+}
 
 </script>
 
