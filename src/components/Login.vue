@@ -34,7 +34,7 @@
                 v-on:click="login">Login
         </v-btn>
     </v-flex>
-    <v-flex xs3>
+    <v-flex>
         <v-btn v-if="loggedIn"
                 color="error"
                 v-on:click="logout">Logout
