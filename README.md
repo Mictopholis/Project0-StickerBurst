@@ -4,7 +4,7 @@
 
 ``` bash
 # clone the repository to your local machine
-git clone <repository link>
+git clone https://github.com/MeeraWakim/Sticker-Burst.git
 
 # install dependencies
 npm install
