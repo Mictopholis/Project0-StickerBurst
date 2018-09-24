@@ -270,7 +270,7 @@ methods: {
                 this.tierlevel1=false;
                 this.tierlevel2=false;
             }
-            else if(this.tierlevel==0){
+            else if(this.tierlevel==1){
                 this.tierlevel0=false;
                 this.tierlevel1=true;
                 this.tierlevel2=false;
@@ -286,12 +286,15 @@ methods: {
         if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
           this.tierlevel = 0
-          
+
         }
       },
       logout: function (event) {
         this.loggedIn = 0
         alert('Logged Out')
+        this.tierlevel0 = true
+        this.tierlevel1 = false
+        this.tierlevel2 = false
       },
       onFileChange(item, e) {
       this.imageChosen = true;
