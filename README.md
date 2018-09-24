@@ -5,14 +5,15 @@
 ## Build Setup
 
 ``` bash
+#git clone <repository link>
+
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# run project on localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
 ```
+Once the npm run dev command runs, you should be able to explore and use our entire website on localhost:8080 (or whichever address your terminal says) in your browser of choice (preferably chrome) with no issues.
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
