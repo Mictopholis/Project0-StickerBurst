@@ -93,18 +93,18 @@ import { EventBus } from '../main.js';
             alert('Logged in as ' + this.input.username + '\nTier ' + this.access[this.loop] + ' Access')
             this.loggedIn = 1
             this.tierlevel = this.access[this.loop]
+            EventBus.$emit('tierinfo',this.tierlevel)
           }
         }
         if (this.loggedIn == 0) {
           alert('Invalid Login Credentials. Please Try Again.')
+          this.tierlevel = 0
+          EventBus.$emit('tierinfo',this.tierlevel)
         }
       },
       logout: function (event) {
         this.loggedIn = 0
         alert('Logged Out')
-      },
-      emitGlobalClickEvent() {
-          EventBus.$emit('tierinfo',this.tierlevel);
       }
     }
   }
