@@ -98,7 +98,7 @@
                 <v-flex xs6>
                     <v-card>
                         <!--STICKER THEME SELECTION BEGINS HERE-->
-<div>
+<div v-if="imageChosen">
  <!-- Tier 0 (no login) Buttons -->
   <div v-if="!buttonSelected">
       <h2>Sticker Theme Selection!</h2>
@@ -183,6 +183,9 @@
       </v-layout>
     </div>
 
+</div>
+<div v-else>
+Please upload an image first
 </div>
 <!--sticker theme selection ends here-->                        
                     </v-card>
@@ -317,10 +320,7 @@ methods: {
       this.imageChosen = false;
       item.image = false;
     },
-    emitGlobalClickEvent() {
-      EventBus2.$emit('image-chosen-status', this.imageChosen);
-      console.log("image chosen: "+this.imageChosen);
-    },
+
     ClickFunction: function (stickerNumber){
       this.buttonSelected = true
       this.theme = this.themes[stickerNumber]
