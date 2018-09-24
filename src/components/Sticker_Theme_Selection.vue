@@ -131,9 +131,9 @@ export default {
         this.tierlevel2 = false;
       }
       if (tierlevel == 1){
-        this.tierlevel0 = false;
-        this.tierlevel1 = true;
-        this.tierlevel2 = false;
+        this.$set(this.object, 'tierlevel0', false)
+        this.$set(this.object, 'tierlevel1', true)
+        this.$set(this.object, 'tierlevel2', false)
       }
       if (tierlevel == 2){
         this.tierlevel0 = false;
